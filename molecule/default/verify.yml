@@ -1,0 +1,21 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Load variables
+      include_vars:
+        file: ../../defaults/main.yml
+    - name: Configure ipp-crypto examples
+      shell:
+        cmd: "cmake CMakeLists.txt -B_build -DARCH={{ ippcp_arch }} -DMERGED_BLD:BOOL=ON -DBUILD_EXAMPLES:BOOL=ON"
+        chdir: "{{ ippcp_checkout_path }}/examples"
+      become: true
+    
+    - name: Compile ipp-crypto examples
+      shell:
+        cmd: "cmake --build _build --parallel {{ num_build_jobs }}"
+        chdir: "{{ ippcp_checkout_path }}/examples"
+      become: true

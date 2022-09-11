@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include melhindi.intel_ipp_crypto"
+      include_role:
+        name: "melhindi.intel_ipp_crypto"

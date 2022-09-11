@@ -1,0 +1,11 @@
+---
+# defaults file for intel_ipp_crypto
+
+ippcp_url: "https://github.com/intel/ipp-crypto"
+ippcp_checkout_path: "/tmp/ipp_crypto"
+ippcp_version: "HEAD"
+c_compiler: "gcc"
+cpp_compiler: "g++"
+ippcp_arch: "intel64"
+ippcp_install_prefix: "/opt/intel/ippcp"
+num_build_jobs: 2

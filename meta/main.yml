@@ -1,0 +1,18 @@
+galaxy_info:
+  role_name: intel_ipp_cyrpto
+  author: melhindi
+  description: Build and install Intel's IPP-Crypto library from source
+  license: Apache-2.0
+  min_ansible_version: 2.1
+  platforms:
+    - name: Ubuntu
+      versions:
+      - focal
+      - jammy
+
+  galaxy_tags:
+    - intel
+    - ippCrypto
+    - crypto
+
+dependencies: []

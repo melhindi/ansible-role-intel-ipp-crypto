@@ -1,0 +1,50 @@
+---
+# tasks file for intel_ipp_crypto
+
+- name: Ensure git is installed
+  ansible.builtin.apt:
+    name: git
+    state: present
+    update_cache: true
+
+- name: Ensure cmake is installed
+  ansible.builtin.apt:
+    name: cmake
+    state: present
+    update_cache: true
+
+- name: Ensure nasm is installed
+  ansible.builtin.apt:
+    name: nasm
+    state: present
+    update_cache: true
+
+- name: Ensure libssl is installed
+  ansible.builtin.apt:
+    name: libssl-dev
+    state: present
+    update_cache: true
+
+- name: Clone intel ipp-crypto repository
+  ansible.builtin.git:
+    repo: "{{ ippcp_url }}"
+    dest: "{{ ippcp_checkout_path }}"
+    version: "{{ ippcp_version }}"
+
+- name: Configure ipp-crypto
+  ansible.builtin.shell:
+    cmd: "CC={{ c_compiler }} CXX={{ cpp_compiler }} cmake CMakeLists.txt -B_build -DARCH={{ ippcp_arch }} -DCMAKE_INSTALL_PREFIX={{ ippcp_install_prefix }}"
+    chdir: "{{ ippcp_checkout_path }}"
+  become: true
+
+- name: Compile ipp-crypto
+  ansible.builtin.shell:
+    cmd: "cmake --build _build --parallel {{ num_build_jobs }}"
+    chdir: "{{ ippcp_checkout_path }}"
+  become: true
+
+- name: Install ipp-crypto
+  ansible.builtin.shell:
+    cmd: "cmake --build _build --target install"
+    chdir: "{{ ippcp_checkout_path }}"
+  become: true
