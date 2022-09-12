@@ -7,7 +7,7 @@ Requirements
 ------------
 
 Pre-requisites not be covered by Ansible or the role:
-- None
+- Build-essentials for compiling the library
 
 Role Variables
 --------------
@@ -27,7 +27,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: all
       roles:
-         - { role: melhindi.intel_ipp_cyrpto }
+         - { role: melhindi.intel_ipp_crypto }
 
 License
 -------

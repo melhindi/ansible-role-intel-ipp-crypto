@@ -1,5 +1,5 @@
 galaxy_info:
-  role_name: intel_ipp_cyrpto
+  role_name: intel_ipp_crypto
   author: melhindi
   description: Build and install Intel's IPP-Crypto library from source
   license: Apache-2.0
