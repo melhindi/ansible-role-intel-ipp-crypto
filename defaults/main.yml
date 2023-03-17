@@ -8,4 +8,4 @@ c_compiler: "gcc"
 cpp_compiler: "g++"
 ippcp_arch: "intel64"
 ippcp_install_prefix: "/opt/intel/ippcp"
-num_build_jobs: 2
+num_build_jobs: "{{ ansible_processor_vcpus // 2 }}"
