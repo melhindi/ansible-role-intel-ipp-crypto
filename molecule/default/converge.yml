@@ -3,5 +3,5 @@
   hosts: all
   tasks:
     - name: "Include melhindi.intel_ipp_crypto"
-      include_role:
+      ansible.builtin.include_role:
         name: "melhindi.intel_ipp_crypto"

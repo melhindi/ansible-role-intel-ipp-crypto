@@ -38,13 +38,13 @@
   become: true
 
 - name: Compile ipp-crypto
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "cmake --build _build --parallel {{ num_build_jobs }}"
     chdir: "{{ ippcp_checkout_path }}"
   become: true
 
 - name: Install ipp-crypto
-  ansible.builtin.shell:
+  ansible.builtin.command:
     cmd: "cmake --build _build --target install"
     chdir: "{{ ippcp_checkout_path }}"
   become: true
